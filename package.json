@@ -1,5 +1,5 @@
 {
-  "name": "reactivemaps-quick-start",
+  "name": "reactivemaps-starter",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,10 +7,12 @@
     "@appbaseio/reactivesearch": "^2.5.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "serve": "^6.5.5"
   },
   "scripts": {
     "start": "react-scripts start",
+    "now-start": "serve --single ./build",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
