@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { ReactiveBase, SingleList } from '@appbaseio/reactivesearch';
+import {
+	ReactiveBase,
+	SingleList,
+	SelectedFilters,
+} from '@appbaseio/reactivesearch';
 import { ReactiveMap } from '@appbaseio/reactivemaps';
 
 import './App.css';
@@ -13,39 +17,29 @@ class App extends Component {
 				type="places"
 				mapKey="AIzaSyBQdVcKCe0q_vOBDUvJYpzwGpt_d_uTj4Q"
 			>
-				<div
-					style={{
-						width: '100%',
-						display: 'flex',
-						flexDirection: 'row',
-						justifyContent: 'space-between'
-					}}
-				>
-					<SingleList
-						title="Places"
-						componentId="places"
-						dataField="place.raw"
-						size={50}
-						showSearch={true}
-						style={{
-							width: '25%',
-							padding: 20
-						}}
-					/>
-
-					<ReactiveMap
-						componentId="map"
-						dataField="location"
-						react={{
-							and: "places"
-						}}
-						onData={result => ({
-							label: result.mag
-						})}
-						style={{
-							width: '70%'
-						}}
-					/>
+				<div className="row">
+					<div className="col">
+						<SingleList
+							title="Places"
+							componentId="places"
+							dataField="place.raw"
+							size={50}
+							showSearch
+						/>
+					</div>
+					<div className="col">
+						<SelectedFilters />
+						<ReactiveMap
+							componentId="map"
+							dataField="location"
+							react={{
+								and: 'places',
+							}}
+							onData={result => ({
+								label: result.mag,
+							})}
+						/>
+					</div>
 				</div>
 			</ReactiveBase>
 		);
